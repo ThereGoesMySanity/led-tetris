@@ -298,7 +298,9 @@ int main(int argc, char** argv){
     signal(SIGINT, InterruptHandler);
     RGBMatrix::Options defaults;
     defaults.chain_length = 2;
+    defaults.led_rgb_sequence = "RBG";
     rgb_matrix::RuntimeOptions runtime_opt;
+    runtime_opt.drop_privileges = 0;
     RGBMatrix *mat = CreateMatrixFromFlags(&argc, &argv, &defaults, &runtime_opt);
     InputHandler *h = new LinuxInputHandler();
     Tetris *tet = new Tetris(mat, h);
